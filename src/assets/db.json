@@ -1,0 +1,44 @@
+{
+  "webHooks": [
+    {
+      "name": "Dhruvit",
+      "description": "To get all data from json file",
+      "methods": "GET",
+      "url": "http://www.localhost:3000/webHooks",
+      "json": "db.json",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Amit",
+      "description": "To get single data from json file",
+      "methods": "GET",
+      "url": "http://www.localhost:3000/webHooks/1",
+      "json": "db.json"
+    },
+    {
+      "name": "Ankit",
+      "description": "To insert data in json file",
+      "methods": "POST",
+      "url": "http://www.localhost:3000/webHooks",
+      "json": "db.json",
+      "id": 3
+    },
+    {
+      "name": "Dhaval",
+      "description": "To update data in json file",
+      "methods": "PUT",
+      "url": "http://localhost:3000/webHooks/4",
+      "json": "db.json",
+      "id": 4
+    },
+    {
+      "name": "Himanshu",
+      "description": "To delete record from json file",
+      "methods": "DELETE",
+      "url": "http://www.localhost:3000/webHooks/5",
+      "json": "db.json",
+      "id": 5
+    }
+  ]
+}

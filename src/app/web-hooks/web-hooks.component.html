@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>Web Hooks <b>Details</b></h2>
+                    </div>
+                    <div class="col-sm-4">
+
+                        <button type="button" (click)="insertForm()" class="btn btn-space btn-info add-new"><i
+                                class="fa fa-plus"></i>
+                            Add New</button>
+
+                        <button type="button" (click)="searchForm()" class="btn btn-space btn-info add-new"><i
+                                class="fa fa-search"></i>
+                            Search By ID</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf='tokenSearch === true'>
+
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" [(ngModel)]='id' class="form-control" placeholder="Enter ID to Search">
+                </div>
+
+                <button (click)="searchData()" class="btn btn-space btn-primary">Submit</button>
+                <button (click)="hideForm()" class="btn btn-space btn-primary">Close</button>
+                <br><br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Methods</th>
+                            <th>URL</th>
+                            <th>JSON</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf='webHook'>
+                            <td>{{webHook.name}}</td>
+                            <td>{{webHook.description}}</td>
+                            <td>{{webHook.methods}}</td>
+                            <td>{{webHook.url}}</td>
+                            <td>{{webHook.json}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div *ngIf='tokenInsert === true'>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" [(ngModel)]='name' class="form-control" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" [(ngModel)]='description' class="form-control" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label>Methods</label>
+                    <input type="text" [(ngModel)]='methods' class="form-control" placeholder="Methods">
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" [(ngModel)]='url' class="form-control" placeholder="URL">
+                </div>
+                <div class="form-group">
+                    <label>JSON</label>
+                    <input type="text" [(ngModel)]='json' class="form-control" placeholder="JSON">
+                </div>
+                <button (click)="insertData()" class="btn btn-primary">Submit</button> &nbsp;
+                <button (click)="hideForm()" class="btn btn-primary">Close</button>
+
+            </div>
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Methods</th>
+                        <th>URL</th>
+                        <th>JSON</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let webHook of webHooks'>
+                        <td>{{webHook.name}}</td>
+                        <td>{{webHook.description}}</td>
+                        <td>{{webHook.methods}}</td>
+                        <td>{{webHook.url}}</td>
+                        <td>{{webHook.json}}</td>
+                        <td>
+                            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                            <a (click)="editWebHook(webHook)" class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a (click)="deleteWebHook(webHook.id)" class="delete" title="Delete"
+                                data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf='tokenEdit === true'>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" [(ngModel)]='name' class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" [(ngModel)]='description' class="form-control" placeholder="Description">
+                </div>
+                <div class="form-group">
+                    <label>Methods</label>
+                    <input type="text" [(ngModel)]='methods' class="form-control" placeholder="Methods">
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" [(ngModel)]='url' class="form-control" placeholder="URL">
+                </div>
+                <div class="form-group">
+                    <label>JSON</label>
+                    <input type="text" [(ngModel)]='json' class="form-control" placeholder="JSON">
+                </div>
+                <button (click)="updateData()" class="btn btn-primary">Submit</button> &nbsp;
+                <button (click)="hideForm()" class="btn btn-primary">Close</button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
